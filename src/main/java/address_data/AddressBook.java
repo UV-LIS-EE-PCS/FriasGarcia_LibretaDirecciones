@@ -18,14 +18,17 @@ public class AddressBook {
         saveEntry(entry);
     }
     public void saveEntry(AddressEntry entry){
+        try {
+            if (!Files.exists(contactDir)) {
+                Files.createDirectories(contactDir);
+            }
+        } catch (IOException e) {
+            System.out.println("No se pudo crear el archivo");
+        }
         // Explain later
         try (BufferedWriter bwContactList = Files.newBufferedWriter(contactFile,
                 java.nio.file.StandardOpenOption.CREATE,
                 java.nio.file.StandardOpenOption.APPEND)) {
-
-            if (!Files.exists(contactDir)) {
-                Files.createDirectories(contactDir);
-            }
 
                 bwContactList.write(entry.toString());
                 bwContactList.newLine();

@@ -9,7 +9,11 @@ Creación de las clases base y espacio de trabajo establecido para las pruebas -
 
 ## Third commit - TreeMap for efficient List operation
 Se utiliza la librería de TreeMap para obtener un mapa con identificadores únicos
-como los apellidos además de realizar de forma eficiente las operaciones. - 18/05/2024
+como los apellidos además de realizar de forma eficiente las operaciones -- 18/05/2024
 
 ## Fourth commit - Menu Class development
-Desarrollo de la clase menu y su método - 19/05/2024
+Desarrollo de la clase menu y su método -- 19/05/2024
+
+## Fifth commit - Error handling
+Compilación de la clase "AddressBook" arrojo errores en la creación del archivo así como
+problemas para el tratamiento de los atributos -- 20/05/2024

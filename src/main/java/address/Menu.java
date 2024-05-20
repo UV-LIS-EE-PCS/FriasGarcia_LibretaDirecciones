@@ -3,11 +3,10 @@ import address_data.AddressBook;
 import address_data.AddressEntry;
 import java.util.Scanner;
 
-public class Menu extends AddressBook{
+public class Menu {
     AddressBook conctactList = new AddressBook();
+    Scanner sc = new Scanner(System.in);
     public void displayMenu (String optionSelected) {
-        System.out.println("Ingrese la opción a ejecutar");
-        Scanner sc = new Scanner(System.in);
         switch (optionSelected) {
             case "a": //Load file
                 System.out.println("Ingrese el nombre del archivo");
@@ -26,7 +25,7 @@ public class Menu extends AddressBook{
                 System.out.println("Estado:");
                 contactInfo[4] = sc.nextLine();
                 System.out.println("Código postal:");
-                int postal = sc.nextInt();
+                int postal = Integer.parseInt(sc.nextLine());
                 System.out.println("Teléfono:");
                 contactInfo[5] = sc.nextLine();
                 System.out.println("Correo electrónico:");
@@ -49,14 +48,17 @@ public class Menu extends AddressBook{
                 System.out.println("Ingrese el apellido del contacto a buscar:");
                 String contactLastName = sc.nextLine();
                 conctactList.searchContact(contactLastName);
+                break;
             case "e":
                 System.out.println("Mostrando la lista de contactos:");
                 conctactList.printAllContact();
+                break;
             case "f":
                 System.exit(0);
                 break;
             default:
-                System.out.println("Intenta escribir un valor valido");
+                System.out.println("Intenta escribir un valor valido, saliendo... ");
+                System.exit(0);
                 break;
         }
     }
