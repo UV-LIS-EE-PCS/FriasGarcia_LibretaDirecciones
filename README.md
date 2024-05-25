@@ -17,3 +17,6 @@ Desarrollo de la clase menu y su método -- 19/05/2024
 ## Fifth commit - Error handling
 Compilación de la clase "AddressBook" arrojo errores en la creación del archivo así como
 problemas para el tratamiento de los atributos -- 20/05/2024
+
+## Sixth commit - Serialization of AddressBook class
+Construcción del método para cargar archivos -- 24/05/2024 
