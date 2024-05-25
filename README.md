@@ -20,3 +20,6 @@ problemas para el tratamiento de los atributos -- 20/05/2024
 
 ## Sixth commit - Serialization of AddressBook class
 Construcción del método para cargar archivos -- 24/05/2024 
+
+## Eighth commit - Test scenario
+Creación del escenario para comenzar las pruebas -- 24/05/2024
