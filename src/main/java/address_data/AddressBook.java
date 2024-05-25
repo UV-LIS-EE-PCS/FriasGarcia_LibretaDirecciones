@@ -80,6 +80,9 @@ public class AddressBook {
     }
 
     public void printAllContact() {
+        if (contactMap.isEmpty()) {
+            System.out.println("No hay contactos...\n");
+        }
         for (AddressEntry entry : contactMap.values()) {
             System.out.println(entry);
         }
@@ -100,6 +103,8 @@ public class AddressBook {
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("No se pudo leer el archivo: " + e.getMessage());
             }
+        } else {
+            System.out.println("El archivo no existe...");
         }
     }
 }

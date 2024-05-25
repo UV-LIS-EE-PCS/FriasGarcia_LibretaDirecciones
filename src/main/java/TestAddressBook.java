@@ -1,12 +1,10 @@
 import address.Menu;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 public class TestAddressBook extends Menu {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Menu mainMenu = new Menu();
-        Scanner sc = new Scanner(System.in);
-        String answer = sc.nextLine();
-        mainMenu.displayMenu(answer);
+        mainMenu.displayMenu();
     }
 }
