@@ -121,19 +121,16 @@ public class AddressBook {
         if (Files.exists(file)) {
             try (FileInputStream fis = new FileInputStream(file.toFile());
                  ObjectInputStream ois = new ObjectInputStream(fis)) {
-                contactMap = (TreeMap<String, AddressEntry>) ois.readObject();
+                TreeMap<String, AddressEntry> tempContactMap = new TreeMap<>();
+                tempContactMap = (TreeMap<String, AddressEntry>) ois.readObject();
+                for (AddressEntry entry : tempContactMap.values()) {
+                    addContact(entry);
+                }
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("No se pudo leer el archivo: " + e.getMessage());
             }
         } else {
             System.out.println("El archivo no existe...");
-            try {
-                System.out.println("Creando el archivo...");
-                Files.createFile(file);
-                Files.createFile(contactFileObject);
-            } catch (IOException e) {
-                System.out.println("No se pudo crear el archivo: " + e.getMessage());
-            }
         }
     }
 }

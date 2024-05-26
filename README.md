@@ -26,4 +26,7 @@ Creación del escenario para comenzar las pruebas -- 24/05/2024
 
 ## Ninth commit - Test cases and Serialization data
 Los elementos para la serialización de datos fue actualizada al existir duplicidad de datos
-se resolvieron problemas de entrada de datos y se llevaron a cabo algunos escenarios
+se resolvieron problemas de entrada de datos y se llevaron a cabo algunos escenarios -- 26/05/2024
+
+## Tenth commit - Load Contacts method upgrade
+26/05/2024
