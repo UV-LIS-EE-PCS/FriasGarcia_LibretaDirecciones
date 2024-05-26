@@ -14,12 +14,31 @@ public class AddressBook {
     private final Path contactFile = contactDir.resolve("Contact.txt");
     private final Path contactFileObject = contactDir.resolve("AddressLog.dat");
 
+    public AddressBook() { loadFileAddressLog(); }
 
-    public void addEntry(AddressEntry entry) {
-        contactMap.put(entry.getApellido(), entry);
-        saveEntry(entry);
+    public Path getContactFile() {
+        return contactFile;
     }
-    public void saveEntry(AddressEntry entry){
+
+    public Path getContactFileObject() {
+        return contactFileObject;
+    }
+
+    public void addContact(AddressEntry entry) {
+        try {
+            if (contactMap.containsKey(entry.getApellido())) {
+                System.out.println("Ya existe una contacto con ese apellido");
+                searchContact(entry.getApellido());
+                Thread.sleep(600);
+            } else {
+                contactMap.put(entry.getApellido(), entry);
+                saveContact(entry);
+            }
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error en la creación del contacto: " + e);
+        }
+    }
+    public void saveContact(AddressEntry entry){
         try {
             if (!Files.exists(contactDir)) {
                 Files.createDirectories(contactDir);
@@ -28,7 +47,7 @@ public class AddressBook {
                 Files.createFile(contactFileObject);
             }
         } catch (IOException e) {
-            System.out.println("No se pudo crear el archivo");
+            System.out.println("No se pudo crear el archivo: "+e.getMessage());
         }
         // Explain later
         try (BufferedWriter bwContactList = Files.newBufferedWriter(contactFile,
@@ -39,7 +58,8 @@ public class AddressBook {
                 bwContactList.newLine();
 
         } catch (IOException e) {
-            System.out.println("Existe un problema al guardar los parámetros del contacto");
+            System.out.println("Existe un problema al guardar los parámetros del contacto: "
+            + e.getMessage());
         }
 
         // The main file that will be overwritten
@@ -47,15 +67,15 @@ public class AddressBook {
              ObjectOutputStream ooContactList = new ObjectOutputStream(foContactList)) {
             ooContactList.writeObject(contactMap);
         } catch (IOException e) {
-            System.out.println("No se pudo escribir en el archivo");
+            System.out.println("No se pudo escribir en el archivo: "+e.getMessage());
         }
 
     }
-
-    public boolean deleteEntry(String lastName) {
+    public boolean deleteContact(String lastName) {
         try {
             if (contactMap.containsKey(lastName)) {
                 contactMap.remove(lastName);
+                System.out.println("Contacto eliminado: "+lastName);
                 return true;
             } else {
                 return false;
@@ -71,6 +91,7 @@ public class AddressBook {
                 System.out.print(contactMap.get(lastName));
                 return true;
             } else {
+                System.out.println("El contacto no existe...");
                 return false;
             }
         }catch(Exception e) {
@@ -78,15 +99,16 @@ public class AddressBook {
             return false;
         }
     }
-
     public void printAllContact() {
         if (contactMap.isEmpty()) {
             System.out.println("No hay contactos...\n");
+            return;
         }
         for (AddressEntry entry : contactMap.values()) {
             System.out.println(entry);
         }
     }
+
 
     public void loadFileAddressLog() {
         loadContacts(contactFileObject);
@@ -105,6 +127,13 @@ public class AddressBook {
             }
         } else {
             System.out.println("El archivo no existe...");
+            try {
+                System.out.println("Creando el archivo...");
+                Files.createFile(file);
+                Files.createFile(contactFileObject);
+            } catch (IOException e) {
+                System.out.println("No se pudo crear el archivo: " + e.getMessage());
+            }
         }
     }
 }

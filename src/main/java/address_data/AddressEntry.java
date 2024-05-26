@@ -1,6 +1,11 @@
 package address_data;
 
-public class AddressEntry {
+import java.io.Serializable;
+
+public class AddressEntry implements Serializable {
+    // To write & load data from files (Serialization)
+    private static final long serialVersionUID = 84320199408259009L;
+
    private String nombre;
     private String apellido;
     private String calle;
@@ -90,6 +95,6 @@ public class AddressEntry {
     public String toString() {
         return (getNombre()+" "+getApellido()+"\n"+getCalle()+" \n"
                 +getCiudad()+", "+getEstado()+". "+getCodigoPostal()+"\n"+getCorreoElectronico()+"\n"
-                +getTelefono());
+                +getTelefono()+"\n\n");
     }
 }

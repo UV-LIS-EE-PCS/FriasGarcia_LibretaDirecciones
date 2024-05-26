@@ -1,8 +1,5 @@
 package address;
 
-import com.github.lalyos.jfiglet.FigletFont;
-
-import java.awt.desktop.AppEvent;
 import java.io.IOException;
 
 public class AddressBookAplication extends Menu{
