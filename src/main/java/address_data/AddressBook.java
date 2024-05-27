@@ -7,7 +7,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.TreeMap;
 /***
  * @author Kevin Sebastián Frias García
- * Class in charge to store the contact info
+ * @implNote Class in charge to store the contact info
+ * @see TreeMap
  */
 public class AddressBook {
     private TreeMap<String, AddressEntry> contactMap = new TreeMap<>();
@@ -17,7 +18,7 @@ public class AddressBook {
     private final Path contactFile = contactDir.resolve("Contact.txt");
     private final Path contactFileObject = contactDir.resolve("AddressLog.dat");
     /***
-        @apiNote The constructor loads the default file to avoid duplicates
+        @implSpec  The constructor loads the default file to avoid duplicates.
      */
     public AddressBook() {
         try {
@@ -57,16 +58,6 @@ public class AddressBook {
         }
     }
     public void saveContact(AddressEntry entry){
-        try {
-            if (!Files.exists(contactDir)) {
-                Files.createDirectories(contactDir);
-            }
-            if (!Files.exists(contactFileObject)) {
-                Files.createFile(contactFileObject);
-            }
-        } catch (IOException e) {
-            System.out.println("No se pudo crear el archivo: "+e.getMessage());
-        }
         try (BufferedWriter bwContactList = Files.newBufferedWriter(contactFile,
                 StandardOpenOption.CREATE,
                 StandardOpenOption.APPEND)) {
