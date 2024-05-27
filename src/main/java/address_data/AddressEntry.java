@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 /***
  * @author Kevin Sebastián Frias García
- * Class in charge to store the contact info
+ * @implNote Class in charge to store the contact info
+ * @see java.io.Serializable
  */
 public class AddressEntry implements Serializable {
     private static final long serialVersionUID = 84320199408259009L;

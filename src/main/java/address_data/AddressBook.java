@@ -67,7 +67,6 @@ public class AddressBook {
         } catch (IOException e) {
             System.out.println("No se pudo crear el archivo: "+e.getMessage());
         }
-        // Explain later
         try (BufferedWriter bwContactList = Files.newBufferedWriter(contactFile,
                 StandardOpenOption.CREATE,
                 StandardOpenOption.APPEND)) {
