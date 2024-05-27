@@ -2,8 +2,11 @@ package address_data;
 
 import java.io.Serializable;
 
+/***
+ * @author Kevin Sebastián Frias García
+ * Class in charge to store the contact info
+ */
 public class AddressEntry implements Serializable {
-    // To write & load data from files (Serialization)
     private static final long serialVersionUID = 84320199408259009L;
 
    private String nombre;

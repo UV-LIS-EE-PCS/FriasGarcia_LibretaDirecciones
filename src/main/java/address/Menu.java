@@ -4,8 +4,10 @@ import address_data.AddressEntry;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.Format;
-
+/***
+ * @author Kevin Sebastián Frias García
+ * Class in charge to implements the methods
+ */
 public class Menu {
     private AddressBook conctactList = new AddressBook();
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

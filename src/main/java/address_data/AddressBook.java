@@ -5,7 +5,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.TreeMap;
-
+/***
+ * @author Kevin Sebastián Frias García
+ * Class in charge to store the contact info
+ */
 public class AddressBook {
     private TreeMap<String, AddressEntry> contactMap = new TreeMap<>();
     // To get a dynamic route to the contact.txt
@@ -13,7 +16,9 @@ public class AddressBook {
     private final Path contactDir = Paths.get(userHome, "Contacts");
     private final Path contactFile = contactDir.resolve("Contact.txt");
     private final Path contactFileObject = contactDir.resolve("AddressLog.dat");
-
+    /***
+        @apiNote The constructor loads the default file to avoid duplicates
+     */
     public AddressBook() { loadFileAddressLog(); }
 
     public Path getContactFile() {
@@ -109,7 +114,6 @@ public class AddressBook {
         }
     }
 
-
     public void loadFileAddressLog() {
         loadContacts(contactFileObject);
     }
@@ -117,6 +121,7 @@ public class AddressBook {
         final Path file = contactDir.resolve(fileToBeLoad);
         loadContacts(file);
     }
+    // This method is in charge of search the file to be loaded
     private void loadContacts(Path file) {
         if (Files.exists(file)) {
             try (FileInputStream fis = new FileInputStream(file.toFile());
