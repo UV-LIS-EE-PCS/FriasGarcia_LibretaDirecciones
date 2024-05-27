@@ -19,7 +19,20 @@ public class AddressBook {
     /***
         @apiNote The constructor loads the default file to avoid duplicates
      */
-    public AddressBook() { loadFileAddressLog(); }
+    public AddressBook() {
+        try {
+            if (!Files.exists(contactDir)) {
+                Files.createDirectories(contactDir);
+            }
+            if (!Files.exists(contactFileObject)) {
+                Files.createFile(contactFileObject);
+            }
+        } catch (IOException e) {
+            System.out.println("No se pudo crear el archivo: "+e.getMessage());
+        }
+
+        loadFileAddressLog();
+    }
 
     public Path getContactFile() {
         return contactFile;
@@ -122,6 +135,7 @@ public class AddressBook {
         loadContacts(file);
     }
     // This method is in charge of search the file to be loaded
+    @SuppressWarnings("unchecked")
     private void loadContacts(Path file) {
         if (Files.exists(file)) {
             try (FileInputStream fis = new FileInputStream(file.toFile());
