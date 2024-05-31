@@ -31,5 +31,10 @@ se resolvieron problemas de entrada de datos y se llevaron a cabo algunos escena
 ### Tenth commit - Load Contacts method upgrade
 26/05/2024
 
+### Eleventh commit - JavaDocs -- 30/05/2024
 # JavaDocs
 https://htmlpreview.github.io/?https://github.com/OverNuke/FriasGarcia_LibretaDirecciones/blob/main/javaDocs/index.html
+
+### Twelfth commit - PostMortem
+Detalles mejorados del proyecto como la duplicidad de datos del archivo "Contact.txt" resuleto, mejoras de la implementación 
+de la librería de Spring, adición de la dependencia "actuator" -- 31/05/2024
