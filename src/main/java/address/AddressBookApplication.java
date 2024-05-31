@@ -11,7 +11,7 @@ import java.io.IOException;
  * Class in charge to start the application
  */
 @SpringBootApplication
-public class AddressBookApplication extends Menu{
+public class AddressBookApplication extends Menu {
     public static void main(String[] args) throws IOException {
         SpringApplication mainApplication = new SpringApplication(AddressBookApplication.class);
         mainApplication.setWebApplicationType(WebApplicationType.NONE);
