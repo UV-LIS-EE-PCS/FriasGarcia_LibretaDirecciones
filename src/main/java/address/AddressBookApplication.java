@@ -17,7 +17,7 @@ public class AddressBookApplication extends Menu{
         mainApplication.setWebApplicationType(WebApplicationType.NONE);
         ApplicationContext context = mainApplication.run(args);
 
-        // Obtener el bean de tipo Menu y llamar a displayMenu
+        // Get the Menu's bean y call the method display menu
         Menu menu = context.getBean(Menu.class);
         menu.displayMenu();
     }
