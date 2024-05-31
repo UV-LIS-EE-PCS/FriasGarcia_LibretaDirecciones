@@ -12,18 +12,6 @@ public class Menu {
     private AddressBook conctactList = new AddressBook();
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     protected void displayMenu () throws IOException {
-        System.out.print("\n" +
-                "      ___                   ___          ___        ___          ___          ___                   ___         ___     \n" +
-                "     /\\  \\        ___      /\\  \\        /\\__\\      /\\__\\        /\\  \\        /\\__\\        ___      /\\  \\       /\\  \\    \n" +
-                "    /::\\  \\      /\\  \\    /::\\  \\      /::|  |    /:/  /       /::\\  \\      /::|  |      /\\  \\    /::\\  \\     /::\\  \\   \n" +
-                "   /:/\\:\\  \\     \\:\\  \\  /:/\\:\\  \\    /:|:|  |   /:/  /       /:/\\:\\  \\    /:|:|  |      \\:\\  \\  /:/\\:\\  \\   /:/\\:\\  \\  \n" +
-                "  /::\\~\\:\\__\\    /::\\__\\/::\\~\\:\\  \\  /:/|:|  |__/:/__/  ___  /::\\~\\:\\  \\  /:/|:|  |__    /::\\__\\/:/  \\:\\__\\ /:/  \\:\\  \\ \n" +
-                " /:/\\:\\ \\:|__|__/:/\\/__/:/\\:\\ \\:\\__\\/:/ |:| /\\__\\:|  | /\\__\\/:/\\:\\ \\:\\__\\/:/ |:| /\\__\\__/:/\\/__/:/__/ \\:|__/:/__/ \\:\\__\\\n" +
-                " \\:\\~\\:\\/:/  /\\/:/  /  \\:\\~\\:\\ \\/__/\\/__|:|/:/  /:|  |/:/  /\\:\\~\\:\\ \\/__/\\/__|:|/:/  /\\/:/  /  \\:\\  \\ /:/  |:\\  \\ /:/  /\n" +
-                "  \\:\\ \\::/  /\\::/__/    \\:\\ \\:\\__\\      |:/:/  /|:|__/:/  /  \\:\\ \\:\\__\\      |:/:/  /\\::/__/    \\:\\  /:/  / \\:\\  /:/  / \n" +
-                "   \\:\\/:/  /  \\:\\__\\     \\:\\ \\/__/      |::/  /  \\::::/__/    \\:\\ \\/__/      |::/  /  \\:\\__\\     \\:\\/:/  /   \\:\\/:/  /  \n" +
-                "    \\::/__/    \\/__/      \\:\\__\\        /:/  /    ~~~~         \\:\\__\\        /:/  /    \\/__/      \\::/__/     \\::/  /   \n" +
-                "     ~~                    \\/__/        \\/__/                   \\/__/        \\/__/                 ~~          \\/__/    \n");
         System.out.println("Recuerda leer los mensajes del sitema");
         while (true) {
             System.out.println("Selecciona una opción:\n" +
@@ -45,10 +33,8 @@ public class Menu {
                             final String file = reader.readLine();
                             conctactList.loadContactsFromOtherFile(file);
                         } catch (IOException e) {
-                            System.out.println("Ha habido un error inesperado");
+                            System.out.println("Ha habido un error al cargar los contactos...");
                         }
-
-
                         break;
                     case "b":
                         try {
@@ -75,6 +61,8 @@ public class Menu {
 
                         } catch (IOException | NumberFormatException e) {
                             System.out.println("Revisa los valores ingresados...\n"+e.getMessage());
+                            Thread.sleep(600);
+                            break;
                         }
                         break;
                     case "c":
@@ -83,9 +71,9 @@ public class Menu {
                         try {
                             contactLastname = reader.readLine();
                             if (conctactList.searchContact(contactLastname)) {
-                                System.out.println("Estas seguro: Y/N");
-                                String confirmation = reader.readLine();
-                                if (confirmation.equals("Y")) {
+                                System.out.println("Estas seguro: y/n");
+                                String confirmation = reader.readLine().toLowerCase();
+                                if (confirmation.equals("y")) {
                                     conctactList.deleteContact(contactLastname);
                                 }
                             }
@@ -113,11 +101,12 @@ public class Menu {
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Intenta escribir un valor valido -> "+optionSelected);
+                        System.out.println("Intenta escribir un valor valido. Prueba escribiendo: \"a\"");
                         break;
                 }
-            } catch (IOException e) {
-                System.out.println("El valor introducido no es váildo: "+ e.getMessage());
+            } catch (IOException | NullPointerException | InterruptedException e) {
+                System.out.println("El valor introducido no es válido. Prueba escribiendo: \"a\"");
+                break;
             }
         }
     }
